@@ -1,9 +1,22 @@
-import * as echarts from 'echarts';
+import type { EChartsOption } from 'echarts';
+import { LineChart } from 'echarts/charts';
+import { GridComponent, ToolboxComponent } from 'echarts/components';
+import * as echarts from 'echarts/core';
+import { UniversalTransition } from 'echarts/features';
+import { CanvasRenderer } from "echarts/renderers";
 import type { LocaleOption } from 'echarts/types/src/core/locale';
 import type { RendererType, ThemeOption } from 'echarts/types/src/util/types';
 import { useEffect, useState } from 'react';
 
 import { useHoverObserver } from '~/utils/hooks';
+
+echarts.use([
+  LineChart,
+  CanvasRenderer as any,
+  GridComponent,
+  ToolboxComponent,
+  UniversalTransition,
+])
 
 type EChartsInitOpts = {
   locale?: string | LocaleOption;
@@ -15,7 +28,7 @@ type EChartsInitOpts = {
 };
 
 export type EChartProps = {
-  option: echarts.EChartsOption;
+  option: EChartsOption;
   theme?: string | ThemeOption;
   initOpts?: EChartsInitOpts;
   isLoading?: boolean;
@@ -51,7 +64,7 @@ const useAutoResize = (chart: echarts.ECharts | undefined) => {
 
 const useEChartsOption = (
   chart: echarts.ECharts | undefined,
-  option: echarts.EChartsOption
+  option: EChartsOption
 ) => {
   useEffect(() => {
     mutateChart(chart, (chart) => chart.setOption(option, true));

@@ -6,4 +6,8 @@ module.exports = {
   publicPath: "/build/",
   serverBuildDirectory: "build",
   devServerPort: 8002,
+  serverDependenciesToBundle: [
+    /^echarts.*/,
+    /^zrender.*/,
+  ]
 };
