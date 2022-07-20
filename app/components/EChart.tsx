@@ -3,7 +3,7 @@ import { LineChart } from 'echarts/charts';
 import { GridComponent, ToolboxComponent } from 'echarts/components';
 import * as echarts from 'echarts/core';
 import { UniversalTransition } from 'echarts/features';
-import { CanvasRenderer } from "echarts/renderers";
+import { CanvasRenderer } from 'echarts/renderers';
 import type { LocaleOption } from 'echarts/types/src/core/locale';
 import type { RendererType, ThemeOption } from 'echarts/types/src/util/types';
 import { useEffect, useState } from 'react';
@@ -12,11 +12,11 @@ import { useHoverObserver } from '~/utils/hooks';
 
 echarts.use([
   LineChart,
-  CanvasRenderer as any,
+  CanvasRenderer,
   GridComponent,
   ToolboxComponent,
   UniversalTransition,
-])
+]);
 
 type EChartsInitOpts = {
   locale?: string | LocaleOption;
